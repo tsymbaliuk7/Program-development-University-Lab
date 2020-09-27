@@ -5,7 +5,7 @@ import com.university.UniversityUnit;
 public class Unit extends UniversityUnit {
     private int employeesNum;
 
-    public Unit(Integer employeesNum){
+    Unit(Integer employeesNum){
         this.employeesNum = employeesNum;
     }
 

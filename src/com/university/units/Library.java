@@ -8,7 +8,7 @@ public class Library extends Unit{
 
     @Override
     public void show(){
-        System.out.println("University Library: " + employees() + " employees\n" );
+        System.out.println("University Library: " + employees() + " employees" );
     }
 
 

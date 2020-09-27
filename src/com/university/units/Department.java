@@ -1,21 +1,17 @@
 package com.university.units;
 
-import com.university.UniversityUnit;
-
-import java.util.Collection;
-
 public class Department extends Unit{
 
      private  String departmentName;
 
-     public Department(Integer employees, String facultyName){
+     public Department(Integer employees, String departmentName){
          super(employees);
-         this.departmentName = facultyName;
+         this.departmentName = departmentName;
     }
 
     @Override
     public void show(){
-        System.out.println(departmentName + ":  " + employees() + " employees\n" );
+        System.out.println(departmentName + ":  " + employees() + " employees" );
 
     }
 

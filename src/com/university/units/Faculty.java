@@ -1,7 +1,5 @@
 package com.university.units;
 
-import com.university.UniversityUnit;
-
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -20,14 +18,13 @@ public class Faculty extends Unit{
 
     @Override
     public void show(){
-        System.out.println(facultyName + ": " + this.employees() + " employees\n" );
-        System.out.println(facultyName + " departments:\n");
+        System.out.println(facultyName + " faculty: " + this.employees() + " employees (with all departments)" );
+        System.out.println(facultyName + " departments:");
         Iterator<Department> it = departmentUnits.iterator();
         while(it.hasNext()){
-            System.out.println("--------- ");
+            System.out.print("--------- ");
             it.next().show();
         }
-        System.out.println();
     }
 
 
@@ -52,4 +49,9 @@ public class Faculty extends Unit{
     public int getOnlyFacultyEmployees() {
         return onlyFacultyEmployees;
     }
+
+    public void addDepartment(Department department){
+         departmentUnits.add(department);
+    }
+
 }

@@ -8,11 +8,11 @@ public class Rectorate extends Unit{
         rector = new Rector(rectorName);
     }
 
-    public Rector getRector() {
+    private Rector getRector() {
         return rector;
     }
 
-    private static class Rector{
+    protected static class Rector{
        String rectorName;
        Rector(String rectorName){
            this.rectorName = rectorName;
@@ -21,7 +21,8 @@ public class Rectorate extends Unit{
 
     @Override
     public void show(){
-        System.out.println("University Library: " + employees() + " employees\n" );
+        System.out.println("University Rectorate: " + this.employees() + " employees" );
+        System.out.println("Rector name: " + this.getRector().rectorName);
     }
 
 

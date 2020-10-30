@@ -1,11 +1,26 @@
 package com.university.units;
 
 public enum PropertyType {
-    PRIVATE_UNIVERSITY, STATE_UNIVERSITY;
+    UNKNOWN(false), PRIVATE_UNIVERSITY(true), STATE_UNIVERSITY(true);
+    boolean isKnown;
+
+    PropertyType(boolean isKnown){
+        this.isKnown = isKnown;
+    }
+
+    public boolean isKnown() {
+        return isKnown;
+    }
 
     @Override
     public String toString() {
-        return super.toString().toLowerCase();
+        StringBuilder type = new StringBuilder();
+        String[] stringList = super.toString().toLowerCase().split("_");
+        for(String i : stringList){
+            type.append(i);
+            type.append(' ');
+        }
+        return type.toString();
     }
 }
 

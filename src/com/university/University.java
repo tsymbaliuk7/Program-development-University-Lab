@@ -46,7 +46,9 @@ public class University implements Showable {
     @Override
     public void show(){
         System.out.println("This is \"" + name + "\"");
-        System.out.println("Property type: " + propertyType);
+        if (propertyType.isKnown()) {
+            System.out.println("Property type: " + propertyType);
+        }
         System.out.println("There are " + totalEmployees + " employees in \"" + name + "\"");
         System.out.println("\nUniversities structural units:\n");
         Iterator<Showable> it = universityUnits.iterator();

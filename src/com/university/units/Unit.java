@@ -2,7 +2,7 @@ package com.university.units;
 
 import com.university.UniversityUnit;
 
-public class Unit extends UniversityUnit {
+public class Unit extends UniversityUnit implements Showable {
     private int employeesNum;
 
     Unit(Integer employeesNum){

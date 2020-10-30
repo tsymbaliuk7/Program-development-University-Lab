@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
-        University university = new University(new ArrayList<>(), "Kyiv Polytechnic Institute", PropertyType.STATE);
+        University university = new University(new ArrayList<>(), "Kyiv Polytechnic Institute", PropertyType.STATE_UNIVERSITY);
         university.addUniversityUnit(new Rectorate(201, "Mykhailo Zghurovsky"));
         university.addUniversityUnit(new Library(123));
         university.addUniversityUnit(new CountingHouse(50));

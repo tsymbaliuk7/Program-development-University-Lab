@@ -7,6 +7,7 @@ public class Faculty extends Unit{
      private String facultyName;
      private int onlyFacultyEmployees;
      private Collection<Department> departmentUnits;
+
      public Faculty(Integer employees, String facultyName, Collection<Department> departmentUnits){
          super(employees);
          onlyFacultyEmployees = employees;
@@ -46,7 +47,7 @@ public class Faculty extends Unit{
         return totalEmployees;
     }
 
-    public int getOnlyFacultyEmployees() {
+    private int getOnlyFacultyEmployees() {
         return onlyFacultyEmployees;
     }
 

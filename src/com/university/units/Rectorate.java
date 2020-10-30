@@ -12,7 +12,7 @@ public class Rectorate extends Unit{
         return rector;
     }
 
-    protected static class Rector{
+     static class Rector{
        String rectorName;
        Rector(String rectorName){
            this.rectorName = rectorName;

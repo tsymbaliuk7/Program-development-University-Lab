@@ -1,20 +1,21 @@
 package com.university;
 
 import com.university.units.PropertyType;
+import com.university.units.Showable;
 import com.university.units.Unit;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-public class University {
+public class University implements Showable {
     private String name;
     private int totalEmployees;
 
     private PropertyType propertyType;
-    private Collection<UniversityUnit> universityUnits;
+    private Collection<Showable> universityUnits;
 
 
-    University(Collection<UniversityUnit> universityUnits, String name, PropertyType propertyType){
+    University(Collection<Showable> universityUnits, String name, PropertyType propertyType){
         this.universityUnits = universityUnits;
         this.name = name;
         this.propertyType = propertyType;
@@ -32,22 +33,23 @@ public class University {
         return propertyType;
     }
 
-    public Collection<UniversityUnit> getUniversityUnits() {
+    public Collection<Showable> getUniversityUnits() {
         return universityUnits;
     }
 
 
     void addUniversityUnit(UniversityUnit universityUnit){
         totalEmployees += universityUnit.employees();
-        this.universityUnits.add(universityUnit);
+        this.universityUnits.add((Showable) universityUnit);
     }
 
-    void show(){
+    @Override
+    public void show(){
         System.out.println("This is \"" + name + "\"");
         System.out.println("Property type: " + propertyType);
         System.out.println("There are " + totalEmployees + " employees in \"" + name + "\"");
         System.out.println("\nUniversities structural units:\n");
-        Iterator<UniversityUnit> it = universityUnits.iterator();
+        Iterator<Showable> it = universityUnits.iterator();
         while(it.hasNext()){
             it.next().show();
             System.out.println();

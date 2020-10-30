@@ -1,7 +1,7 @@
 package com.university.units;
 
 public enum PropertyType {
-    PRIVATE, STATE;
+    PRIVATE_UNIVERSITY, STATE_UNIVERSITY;
 
     @Override
     public String toString() {

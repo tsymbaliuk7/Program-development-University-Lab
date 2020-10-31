@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoUnitUniversityException {
         University university = new University(new ArrayList<>(), "Kyiv Polytechnic Institute", PropertyType.STATE_UNIVERSITY);
         university.addUniversityUnit(new Rectorate(201, "Mykhailo Zghurovsky"));
         university.addUniversityUnit(new Library(123));
@@ -18,5 +18,9 @@ public class Main {
         university.addUniversityUnit(tef);
 
         university.show();
+
+        University universityCopy = new University(university);
+        universityCopy.setName("KPI copy");
+        universityCopy.show();
     }
 }

@@ -1,8 +1,6 @@
 package com.university;
 
 import com.university.units.PropertyType;
-import com.university.units.Showable;
-import com.university.units.Unit;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -21,6 +19,20 @@ public class University implements Showable {
         this.propertyType = propertyType;
     }
 
+
+    University(University obj){
+        this.name = obj.getName();
+        this.propertyType = obj.getPropertyType();
+        this.universityUnits = obj.getUniversityUnits();
+        this.totalEmployees = obj.getTotalEmployees();
+    }
+
+    private void checkUnitList() throws NoUnitUniversityException{
+        if(universityUnits.size() == 0) {
+            throw new NoUnitUniversityException("\""+ this.getName() + "\" has no units");
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -37,6 +49,13 @@ public class University implements Showable {
         return universityUnits;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPropertyType(PropertyType propertyType) {
+        this.propertyType = propertyType;
+    }
 
     void addUniversityUnit(UniversityUnit universityUnit){
         totalEmployees += universityUnit.employees();
@@ -44,7 +63,7 @@ public class University implements Showable {
     }
 
     @Override
-    public void show(){
+    public void show() {
         System.out.println("This is \"" + name + "\"");
         if (propertyType.isKnown()) {
             System.out.println("Property type: " + propertyType);
@@ -52,6 +71,16 @@ public class University implements Showable {
         System.out.println("There are " + totalEmployees + " employees in \"" + name + "\"");
         System.out.println("\nUniversities structural units:\n");
         Iterator<Showable> it = universityUnits.iterator();
+        try {
+            checkUnitList();
+        }
+        catch (NoUnitUniversityException e){
+            System.out.println(e.getMessage());
+        }
+        finally {
+            System.out.println("University unit list check is over");
+        }
+
         while(it.hasNext()){
             it.next().show();
             System.out.println();

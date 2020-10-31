@@ -1,5 +1,7 @@
 package com.university.units;
 
+import com.university.NoUnitUniversityException;
+
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -16,11 +18,23 @@ public class Faculty extends Unit{
     }
 
 
+    void checkDepartmentUnits() throws NoUnitUniversityException {
+         if (this.departmentUnits.size() == 0) {
+            throw new NoUnitUniversityException(facultyName + " has no departments");
+         }
+    }
+
 
     @Override
-    public void show(){
+    public void show() {
         System.out.println(facultyName + " faculty: " + this.employees() + " employees (with all departments)" );
         System.out.println(facultyName + " departments:");
+        try{
+            checkDepartmentUnits();
+        }
+        catch (NoUnitUniversityException e){
+            System.out.println(e.getMessage());
+        }
         Iterator<Department> it = departmentUnits.iterator();
         while(it.hasNext()){
             System.out.print("--------- ");

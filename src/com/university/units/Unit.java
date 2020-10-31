@@ -1,5 +1,6 @@
 package com.university.units;
 
+import com.university.Showable;
 import com.university.UniversityUnit;
 
 public class Unit extends UniversityUnit implements Showable {
@@ -11,7 +12,7 @@ public class Unit extends UniversityUnit implements Showable {
 
     @Override
 
-    public int employees(){
+    protected int employees(){
         return employeesNum;
     }
 

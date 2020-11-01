@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Main {
-    public static void main(String[] args) throws NoUnitUniversityException {
+    public static void main(String[] args) {
+        Bank bank = new Bank("PrivateBank");
         University university = new University(new ArrayList<>(), "Kyiv Polytechnic Institute",
-                PropertyType.STATE_UNIVERSITY, 57);
+                PropertyType.STATE_UNIVERSITY, 57, bank);
         university.addUniversityUnit(new Rectorate(201, "Mykhailo Zghurovsky"));
         university.addUniversityUnit(new Library(123));
 

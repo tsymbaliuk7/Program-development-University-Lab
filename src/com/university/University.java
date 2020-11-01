@@ -10,17 +10,17 @@ import java.util.Objects;
 public class University implements Showable {
     private String name;
     private int totalEmployees;
-    private CountingHouse countingHouse;
     private PropertyType propertyType;
+    private CountingHouse countingHouse;
     private Collection<Showable> universityUnits;
 
 
     University(Collection<Showable> universityUnits, String name, PropertyType propertyType,
-               int countingHouseEmployees){
+               int countingHouseEmployees, Bank bank){
         this.universityUnits = universityUnits;
         this.name = name;
         this.propertyType = propertyType;
-        this.countingHouse = new CountingHouse(countingHouseEmployees);
+        this.countingHouse = new CountingHouse(countingHouseEmployees, bank);
     }
 
 
@@ -109,11 +109,12 @@ public class University implements Showable {
         return totalEmployees == university.totalEmployees &&
                 Objects.equals(name, university.name) &&
                 Objects.equals(propertyType, university.propertyType) &&
+                Objects.equals(countingHouse, university.countingHouse) &&
                 Objects.equals(universityUnits, university.universityUnits);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, totalEmployees, propertyType, universityUnits);
+        return Objects.hash(name, totalEmployees, propertyType, universityUnits, countingHouse);
     }
 }

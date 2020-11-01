@@ -17,6 +17,13 @@ public class Faculty extends Unit{
          this.departmentUnits = departmentUnits;
     }
 
+    public Faculty(Faculty obj){
+         super(obj.getOnlyFacultyEmployees());
+         this.onlyFacultyEmployees = obj.getOnlyFacultyEmployees();
+         this.facultyName = obj.facultyName;
+         this.departmentUnits = obj.departmentUnits;
+    }
+
 
     void checkDepartmentUnits() throws NoUnitUniversityException {
          if (this.departmentUnits.size() == 0) {

@@ -1,22 +1,26 @@
 package com.university;
 
+import com.university.units.CountingHouse;
 import com.university.units.PropertyType;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class University implements Showable {
     private String name;
     private int totalEmployees;
-
+    private CountingHouse countingHouse;
     private PropertyType propertyType;
     private Collection<Showable> universityUnits;
 
 
-    University(Collection<Showable> universityUnits, String name, PropertyType propertyType){
+    University(Collection<Showable> universityUnits, String name, PropertyType propertyType,
+               int countingHouseEmployees){
         this.universityUnits = universityUnits;
         this.name = name;
         this.propertyType = propertyType;
+        this.countingHouse = new CountingHouse(countingHouseEmployees);
     }
 
 
@@ -25,6 +29,7 @@ public class University implements Showable {
         this.propertyType = obj.getPropertyType();
         this.universityUnits = obj.getUniversityUnits();
         this.totalEmployees = obj.getTotalEmployees();
+        this.countingHouse = obj.getCountingHouse();
     }
 
     private void checkUnitList() throws NoUnitUniversityException{
@@ -35,6 +40,11 @@ public class University implements Showable {
 
     public String getName() {
         return name;
+    }
+
+
+    public CountingHouse getCountingHouse() {
+        return countingHouse;
     }
 
     public int getTotalEmployees() {
@@ -80,11 +90,30 @@ public class University implements Showable {
         finally {
             System.out.println("University unit list check is over");
         }
-
+        countingHouse.show();
         while(it.hasNext()){
             it.next().show();
             System.out.println();
         }
         System.out.println();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        System.out.println("Using overrided equals()");
+        if (o == this) return true;
+        if (!(o instanceof University)) {
+            return false;
+        }
+        University university = (University) o;
+        return totalEmployees == university.totalEmployees &&
+                Objects.equals(name, university.name) &&
+                Objects.equals(propertyType, university.propertyType) &&
+                Objects.equals(universityUnits, university.universityUnits);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, totalEmployees, propertyType, universityUnits);
     }
 }

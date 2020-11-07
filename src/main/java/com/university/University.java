@@ -15,16 +15,17 @@ public class University implements Showable {
     private Collection<Showable> universityUnits;
 
 
-    University(Collection<Showable> universityUnits, String name, PropertyType propertyType,
-               int countingHouseEmployees, Bank bank){
+    public University(Collection<Showable> universityUnits, String name, PropertyType propertyType,
+                      int countingHouseEmployees, Bank bank){
         this.universityUnits = universityUnits;
         this.name = name;
         this.propertyType = propertyType;
         this.countingHouse = new CountingHouse(countingHouseEmployees, bank);
+        this.totalEmployees += countingHouseEmployees;
     }
 
 
-    University(University obj){
+    public University(University obj){
         this.name = obj.getName();
         this.propertyType = obj.getPropertyType();
         this.universityUnits = obj.getUniversityUnits();
@@ -32,7 +33,7 @@ public class University implements Showable {
         this.countingHouse = obj.getCountingHouse();
     }
 
-    private void checkUnitList() throws NoUnitUniversityException{
+    public void checkUnitList() throws NoUnitUniversityException{
         if(universityUnits.size() == 0) {
             throw new NoUnitUniversityException("\""+ this.getName() + "\" has no units");
         }
@@ -67,9 +68,10 @@ public class University implements Showable {
         this.propertyType = propertyType;
     }
 
-    void addUniversityUnit(UniversityUnit universityUnit){
+    public University addUniversityUnit(UniversityUnit universityUnit){
         totalEmployees += universityUnit.employees();
         this.universityUnits.add((Showable) universityUnit);
+        return this;
     }
 
     @Override
@@ -117,4 +119,11 @@ public class University implements Showable {
     public int hashCode() {
         return Objects.hash(name, totalEmployees, propertyType, universityUnits, countingHouse);
     }
+
+
+    public void removeUnits(){
+        this.universityUnits.clear();
+        this.totalEmployees = this.countingHouse.employees();
+    }
 }
+

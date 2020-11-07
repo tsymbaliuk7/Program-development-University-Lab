@@ -20,7 +20,7 @@ public enum PropertyType {
             type.append(i);
             type.append(' ');
         }
-        return type.toString();
+        return type.toString().trim();
     }
 }
 

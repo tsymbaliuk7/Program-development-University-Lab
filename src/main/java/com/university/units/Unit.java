@@ -4,15 +4,18 @@ import com.university.Showable;
 import com.university.UniversityUnit;
 
 public class Unit extends UniversityUnit implements Showable {
-    private int employeesNum;
+    protected int employeesNum;
 
     Unit(Integer employeesNum){
         this.employeesNum = employeesNum;
     }
 
-    @Override
+    public void setEmployeesNum(int employeesNum) {
+        this.employeesNum = employeesNum;
+    }
 
-    protected int employees(){
+    @Override
+    public int employees(){
         return employeesNum;
     }
 

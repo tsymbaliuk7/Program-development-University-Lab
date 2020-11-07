@@ -25,7 +25,7 @@ public class Faculty extends Unit{
     }
 
 
-    void checkDepartmentUnits() throws NoUnitUniversityException {
+    public void checkDepartmentUnits() throws NoUnitUniversityException {
          if (this.departmentUnits.size() == 0) {
             throw new NoUnitUniversityException(facultyName + " has no departments");
          }
@@ -68,12 +68,18 @@ public class Faculty extends Unit{
         return totalEmployees;
     }
 
-    private int getOnlyFacultyEmployees() {
+
+
+    public int getOnlyFacultyEmployees() {
         return onlyFacultyEmployees;
     }
 
-    public void addDepartment(Department department){
+    public Faculty addDepartment(Department department){
          departmentUnits.add(department);
+         return this;
     }
 
+    public void removeUnits(){
+         this.departmentUnits.clear();
+    }
 }

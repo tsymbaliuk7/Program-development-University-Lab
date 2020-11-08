@@ -11,7 +11,7 @@ public class Main {
         University university = new University(new ArrayList<>(), "Kyiv Polytechnic Institute",
                 PropertyType.STATE_UNIVERSITY, 57, bank)
                 .addUniversityUnit(new Rectorate(201, "Mykhailo Zghurovsky"))
-                .addUniversityUnit(new Library(123));
+                .addUniversityUnit(new Library(123, 10000));
 
         Faculty tef = new Faculty(100, "Heat Power Engineer", new ArrayList<>());
         tef.addDepartment(new Department(45, "APEPS DEPARTMENT OF IGOR SIKORSKY KPI"))

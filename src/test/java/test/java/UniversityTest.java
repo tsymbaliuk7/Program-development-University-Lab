@@ -19,7 +19,7 @@ public class UniversityTest {
     @Before
     public void init() {
         universityTest.addUniversityUnit(new Rectorate(201, "Mykhailo Zghurovsky"))
-                .addUniversityUnit(new Library(123));
+                .addUniversityUnit(new Library(123, 4444));
     }
 
     @Test

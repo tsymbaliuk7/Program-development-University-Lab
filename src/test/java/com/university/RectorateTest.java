@@ -1,4 +1,4 @@
-package test.java;
+package test;
 
 import com.university.units.Rectorate.*;
 import com.university.units.Rectorate;

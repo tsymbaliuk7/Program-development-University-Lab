@@ -1,4 +1,4 @@
-package test.java;
+package test;
 
 import com.university.NoUnitUniversityException;
 import com.university.units.Department;

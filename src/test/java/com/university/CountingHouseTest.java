@@ -1,4 +1,4 @@
-package test.java;
+package test;
 
 import com.university.Bank;
 import com.university.units.CountingHouse;

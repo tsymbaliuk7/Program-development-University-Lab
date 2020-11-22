@@ -2,6 +2,7 @@ package com.university;
 
 import com.university.units.CountingHouse;
 import com.university.units.PropertyType;
+import com.university.units.Unit;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -9,19 +10,17 @@ import java.util.Objects;
 
 public class University implements Showable {
     private String name;
-    private int totalEmployees;
     private PropertyType propertyType;
     private CountingHouse countingHouse;
-    private Collection<Showable> universityUnits;
+    private Collection<Unit> universityUnits;
 
 
-    public University(Collection<Showable> universityUnits, String name, PropertyType propertyType,
+    public University(Collection<Unit> universityUnits, String name, PropertyType propertyType,
                       int countingHouseEmployees, Bank bank){
         this.universityUnits = universityUnits;
         this.name = name;
         this.propertyType = propertyType;
         this.countingHouse = new CountingHouse(countingHouseEmployees, bank);
-        this.totalEmployees += countingHouseEmployees;
     }
 
 
@@ -29,7 +28,6 @@ public class University implements Showable {
         this.name = obj.getName();
         this.propertyType = obj.getPropertyType();
         this.universityUnits = obj.getUniversityUnits();
-        this.totalEmployees = obj.getTotalEmployees();
         this.countingHouse = obj.getCountingHouse();
     }
 
@@ -49,6 +47,11 @@ public class University implements Showable {
     }
 
     public int getTotalEmployees() {
+        int totalEmployees = this.getCountingHouse().employees();
+        Iterator<Unit> it = universityUnits.iterator();
+        while(it.hasNext()){
+            totalEmployees += it.next().employees();
+        }
         return totalEmployees;
     }
 
@@ -56,7 +59,7 @@ public class University implements Showable {
         return propertyType;
     }
 
-    public Collection<Showable> getUniversityUnits() {
+    public Collection<Unit> getUniversityUnits() {
         return universityUnits;
     }
 
@@ -69,8 +72,7 @@ public class University implements Showable {
     }
 
     public University addUniversityUnit(UniversityUnit universityUnit){
-        totalEmployees += universityUnit.employees();
-        this.universityUnits.add((Showable) universityUnit);
+        this.universityUnits.add((Unit) universityUnit);
         return this;
     }
 
@@ -80,9 +82,9 @@ public class University implements Showable {
         if (propertyType.isKnown()) {
             System.out.println("Property type: " + propertyType);
         }
-        System.out.println("There are " + totalEmployees + " employees in \"" + name + "\"");
+        System.out.println("There are " + getTotalEmployees() + " employees in \"" + name + "\"");
         System.out.println("\nUniversities structural units:\n");
-        Iterator<Showable> it = universityUnits.iterator();
+        Iterator<Unit> it = universityUnits.iterator();
         try {
             checkUnitList();
         }
@@ -108,8 +110,7 @@ public class University implements Showable {
             return false;
         }
         University university = (University) o;
-        return totalEmployees == university.totalEmployees &&
-                Objects.equals(name, university.name) &&
+        return  Objects.equals(name, university.name) &&
                 Objects.equals(propertyType, university.propertyType) &&
                 Objects.equals(countingHouse, university.countingHouse) &&
                 Objects.equals(universityUnits, university.universityUnits);
@@ -117,13 +118,12 @@ public class University implements Showable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, totalEmployees, propertyType, universityUnits, countingHouse);
+        return Objects.hash(name, propertyType, universityUnits, countingHouse);
     }
 
 
     public void removeUnits(){
         this.universityUnits.clear();
-        this.totalEmployees = this.countingHouse.employees();
     }
 }
 

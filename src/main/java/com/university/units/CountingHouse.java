@@ -17,10 +17,10 @@ public class CountingHouse extends Unit{
     }
 
 
-    public double countUnitSalary(UniversityUnit unit, double avgSalaryForUnit){
-        System.out.println("Unit has " + unit.employees());
+    public double countUnitSalary(int unitEmployees, double avgSalaryForUnit){
+        System.out.println("Unit has " + unitEmployees);
         System.out.println("Average salary for unit employer is: " + avgSalaryForUnit);
-        return unit.employees() * avgSalaryForUnit;
+        return unitEmployees * avgSalaryForUnit;
     }
 
     public Bank getBank() {

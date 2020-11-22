@@ -3,23 +3,27 @@ package com.university;
 import com.university.Bank;
 import com.university.units.CountingHouse;
 import com.university.units.Library;
-import org.junit.*;
+import com.university.units.Unit;
+import org.junit.Assert;
+import org.junit.Assert.*;
+import org.junit.Test;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
 
 
-public class CountingHouseTest {
+public class UnitClassTest {
 
 
     @Test
-    public void countUnitSalary_ExistingUnit_SalaryValueForUnit(){
-        CountingHouse countingHouse = Mockito.mock(CountingHouse.class);
-        Library libraryTest = new Library(123, 100000);
+    public void CountUnitSalary_ExistingUnit_SalaryValueForUnit(){
         double avgSalary = 10000;
-        when(countingHouse.countUnitSalary(libraryTest.employees(), avgSalary)).
-                thenReturn(libraryTest.employees() * avgSalary);
+        int unitEmployees = 123;
+        CountingHouse countingHouse = Mockito.mock(CountingHouse.class);
+        Unit libraryTest = new Library(unitEmployees, 100000);
+        when(countingHouse.countUnitSalary(unitEmployees, avgSalary)).
+                thenReturn(unitEmployees * avgSalary);
         Assert.assertEquals(1230000, libraryTest.countUnitSalary(countingHouse, avgSalary), 0.0);
-        verify(countingHouse).countUnitSalary(libraryTest.employees(), avgSalary);
+        verify(countingHouse).countUnitSalary(unitEmployees, avgSalary);
     }
 
 }

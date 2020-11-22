@@ -14,6 +14,10 @@ public class Unit extends UniversityUnit implements Showable {
         this.employeesNum = employeesNum;
     }
 
+    public double countUnitSalary(CountingHouse countingHouse,double avgSalaryForUnit){
+        return countingHouse.countUnitSalary(this.employees(), avgSalaryForUnit);
+    }
+
     @Override
     public int employees(){
         return employeesNum;
